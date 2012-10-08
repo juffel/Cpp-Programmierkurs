@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void parse(char input[]);
+int evaluate(int op1, char op, int op2);
 
 int main()
 {
@@ -22,23 +22,34 @@ int main()
             exit = true;
             break;
         }
+        // parse the exptression <operand1> <operator> <operand2>
+        int op1 = atoi(input);
+        scanf("%s", input);
+        char op = input[0];
+        scanf("%s", input);
+        int op2 = atoi(input);
 
-        printf("parsing....\n");
-        parse(input);
+        // evaluate
+        int result = evaluate(op1, op, op2);
+        printf("%d\n", result);
+
     }
     while(exit == false);
 }
 
-// Dieser Parser rechnet mit einem String der Form "Zahl1 <op> Zahl2"
-void parse(char input[])
+int evaluate(int op1, char op, int op2)
 {
-    char * stkt;
-    stkt = strtok(input, " ");
-    int nr1 = atoi(stkt); 
-    stkt = strtok(NULL, " ");
-    char * op = stkt;
-    stkt = strtok(NULL, " ");
-    int nr2 = atoi(stkt);
-
-    printf("ich habe das gelesen: 1-%d op-%s 2-%d\n", nr1, op, nr2);
+    switch(op)
+    {
+        case '+':
+            return op1 + op2;
+        case '-':
+            return op1 - op2;
+        case '*':
+            return op1 * op2;
+        case '/':
+            return op1 / op2;
+        default:
+            return -1;
+    }
 }
