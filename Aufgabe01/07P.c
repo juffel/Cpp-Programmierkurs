@@ -32,7 +32,7 @@ void reverse(char * input)
         buf = input[i];
         input[i] = input[lengthOf(input)-i-1];
         input[lengthOf(input)-i-1] = buf;
-        printf("%s\n", input);
+//        printf("%s\n", input);
     }
 }
 

@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 }
 
 
+// functions argument is int array of length 128 with frequency of each char
 void printCharFreqs(int * freq)
 {
     // get highest frequency of letters
@@ -49,6 +50,7 @@ void printCharFreqs(int * freq)
         if(freq[i] > max)
             max = freq[i];
     }
+
     // calculate appropriate scale so it fits on 80 char wide terminal
     int scale = 1;
     while(max/scale > 80)
@@ -57,13 +59,13 @@ void printCharFreqs(int * freq)
     // print
     for(int i = 65; i <= 90; i++)
     {
-        cout << (char) i << " ";
+        cout << (char) i << ": " << freq[i] << ": \t";
         for(int j = 0; j < freq[i]/scale; j++) { cout << "|"; }
         cout << endl;
     }
     for(int i = 97; i <= 122; i++)
     {
-        cout << (char) i << " ";
+        cout << (char) i << ": " << freq[i] << ": \t";
         for(int j = 0; j < freq[i]/scale; j++) { cout << "|"; }
         cout << endl;
     }

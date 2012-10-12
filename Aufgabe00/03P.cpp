@@ -1,7 +1,8 @@
 #include <cstdio>
 
+int fibRek(int input);
+int _fibRek(int sndlst, int lst, int input);
 int fib(int input);
-int _fib(int sndlst, int lst, int input);
 
 int main()
 {
@@ -14,14 +15,30 @@ int main()
     return 0;
 }
 
-int fib(int input) 
+int fib(int input)
+{
+    int a, b, c;
+    a = 0;
+    b = 1;
+    c = 1;
+    while(input > 0)
+    {
+        c = a + b;
+        a = b;
+        b = c;
+        input--;
+    }
+    return c;
+}
+
+int fibRek(int input) 
 {
     if (input < 0)
         return -1;
-    return _fib(0, 1, input);
+    return _fibRek(0, 1, input);
 }
 
-int _fib(int sndlst, int lst, int input)
+int _fibRek(int sndlst, int lst, int input)
 {
     if (input == 0)
         return lst;
@@ -29,6 +46,6 @@ int _fib(int sndlst, int lst, int input)
     {
         int new_sndlst = lst;
         int new_lst = sndlst + lst;
-        _fib(new_sndlst, new_lst, --input);
+        _fibRek(new_sndlst, new_lst, --input);
     }
 }
